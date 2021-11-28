@@ -1,0 +1,122 @@
+%! Package = PACKAGE_NAME
+%! Author = gabriel
+%! Date = 5/17/21
+% --------------------------------------------
+% Exportação do pacote criado.
+% --------------------------------------------
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{setup/packages}[2021/05/17 gabriel's Package]
+
+% --------------------------------------------
+% Pacotes utilizados no documento.
+% --------------------------------------------
+\usepackage[T1]{fontenc}                        % Pacote de fontes
+\usepackage[utf8]{inputenc}                     % Pacote de acentuações
+\usepackage[brazil]{babel}                      % Tradução para português (pt-br)
+%\usepackage{mathptmx}                          % Fonte utilizada = TIMES
+%\usepackage{authblk}                           % Informações extras sobre autor(es)
+%\usepackage[nottoc]{tocbibind}                 % Adicionar referencias no sumário
+\usepackage{array}                              % Edição de colunas, matrizes e tabelas.
+%\usepackage[useregional=numeric]{datetime2}    % Fuso horario brasileiro
+\usepackage{titling}                            % get title, author, date
+\usepackage{graphicx}                           % Plotar imagens e gráficos
+\usepackage{float}                              % Posicionamento forçado de imagens
+\usepackage{xcolor}                             % Pacote de cores
+\usepackage{helvet}                             % Fonte utilizada
+\usepackage[hyperref]{backref}                  % permissão de hyperlinks
+\usepackage[num]{abntex2cite}                   % Referências com padrão ABNT
+
+% --------------------------------------------
+% Packages configuration.
+% --------------------------------------------
+\graphicspath{{./images/}} % diretório de imagens
+\citebrackets[] % citação com colchetes
+%\pagecolor{black}
+%\color{white}
+
+% --------------------------------------------
+% backref Commands
+% --------------------------------------------
+%\renewcommand*{\backref}[1]{}% for backref < 1.33 necessary
+\renewcommand*{\backrefalt}[4]{
+    \newline
+    \ifcase #1
+    Não citado.
+    \or
+    Citado na seção #2.
+    \else
+    Citado nas seções #2.
+    \fi
+}
+
+% --------------------------------------------
+% ABNTEX2 Commands
+% --------------------------------------------
+\providecommand{\printeducationcenter}{}
+\newcommand{\educationcenter}[1]{\renewcommand{\printeducationcenter}{#1}}
+
+\providecommand{\printsubtitle}{}
+\newcommand{\subtitle}[1]{\renewcommand{\printsubtitle}{#1}}
+
+\providecommand{\printaffilinitials}{}
+\newcommand{\affilinitials}[1]{\renewcommand{\printaffilinitials}{#1}}
+
+\providecommand{\printcourse}{}
+\newcommand{\course}[1]{\renewcommand{\printcourse}{#1}}
+
+\providecommand{\printdepartment}{}
+\newcommand{\department}[1]{\renewcommand{\printdepartment}{#1}}
+
+\providecommand{\printuniversity}{}
+\newcommand{\university}[1]{\renewcommand{\printuniversity}{#1}}
+
+\providecommand{\printprogram}{}
+\newcommand{\program}[1]{\renewcommand{\printprogram}{#1}}
+
+\providecommand{\printformation}{}
+\newcommand{\formation}[1]{\renewcommand{\printformation}{#1}}
+
+% TODO: warnings daqui em diante
+\newcommand{\affil}{\instituicao}
+
+\newcommand{\printaffil}{\imprimirinstituicao}
+
+\newcommand{\printtitle}{\imprimirtitulo}
+
+\newcommand{\worktype}{\tipotrabalho}
+
+\newcommand{\printworktype}{\imprimirtipotrabalho}
+
+\newcommand{\printcover}{\imprimircapa}
+
+\newcommand{\printtitlepage}{\imprimirfolhaderosto}
+
+\newcommand{\printcoverufsc}{
+    \begin{capa}
+        \centering
+        \begin{figure}
+            \includegraphics[scale=0.2]{logo-ufsc}
+            \centering
+            \label{fig:logo-ufsc}
+        \end{figure}
+        \ABNTEXchapterfont\MakeUppercase{\printaffil}
+
+        \vspace*{1cm}
+
+        \large\theauthor
+
+%        \vfill
+        \vspace*{\fill}
+%        \begin{center}
+            \textbf{\printtitle}\printsubtitle
+%        \end{center}
+        \vspace*{\fill}
+%        \vfill{
+
+        \large\imprimirlocal
+
+        \large\the\year
+
+        \vspace*{1cm}
+    \end{capa}
+}
