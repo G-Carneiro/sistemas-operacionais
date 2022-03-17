@@ -61,3 +61,11 @@ class Paging:
 
     def find_page_of_virtual_address(self, virtual_address: int) -> int:
         return (virtual_address // self._page_size)
+
+    def show_results(self) -> None:
+        print(f"Entradas na tabela de página: {self.number_of_entry_in_pages_table()} \n"
+              f"Número de bits para endereçar a tabela de páginas: {self.bits_for_addressing_pages_table()} \n"
+              f"Número de bits para molduras de página: {self.bits_for_identify_page_frames()} \n "
+              f"Número de bits para endereço físico: {self.bits_for_physical_address()} \n "
+              f"Número de bits para deslocamento dentro da página: {self.shift_bits_within_page()}")
+        return None

@@ -117,6 +117,7 @@ class PeriodicTasks:
                   f"- Tem {len(task.deadline_misses)} perdas de deadline em {task.deadline_misses}\n")
 
         print(f"Total de perdas de deadline: {deadline_misses} \n"
+              f"Períodos ociosos: {self._idle_periods} \n"
               f"Timeline: \n"
               f"{self._time_line}")
 
@@ -127,5 +128,5 @@ a = Task("A", computation_time=5, period=10)
 b = Task("B", computation_time=2, period=4)
 c = Task("C", computation_time=100, period=350)
 sched = PeriodicTasks([a, b])
-sched.earliest_deadline_first(30)
+sched.rate_monotonic(30)
 sched.show_results()
