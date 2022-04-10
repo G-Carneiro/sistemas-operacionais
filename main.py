@@ -1,4 +1,4 @@
-from Paging import Paging
+from utils.Paging import Paging
 
 
 a = Paging("4 KB", 24, "2 GB")
